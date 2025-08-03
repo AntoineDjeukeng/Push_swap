@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_input_string.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adjeuken  <adjeuken@student.42.fr>         +#+  +:+       +#+        */
+/*   By: adjeuken <adjeuken@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 16:30:59 by adjeuken          #+#    #+#             */
-/*   Updated: 2025/06/29 16:07:41 by adjeuken         ###   ########.fr       */
+/*   Updated: 2025/08/03 18:44:54 by adjeuken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ void	append_to_list(t_state *state, int end, t_bool type)
 	state->end = end;
 	if (!new_node)
 		return ;
-	new_node->input = strndup(state->str + state->start, state->end
+	new_node->input = ft_strndup(state->str + state->start, state->end
 			- state->start);
 	new_node->type = type;
 	new_node->flags = NULL;
 	new_node->next = NULL;
 	new_node->include = t_false;
-	if (type == t_true && strchr("diouxXcspn%", state->str[end - 1]))
+	if (type == t_true && ft_strchr("diouxXcspn%", state->str[end - 1]))
 		new_node->include = t_true;
 	if (!state->head)
 	{
@@ -43,7 +43,7 @@ void	append_to_list(t_state *state, int end, t_bool type)
 
 static int	is_flag_char(char c)
 {
-	return (strchr("0123456789.-+ #hlLzjt", c) != NULL);
+	return (ft_strchr("0123456789.-+ #hlLzjt", c) != NULL);
 }
 
 void	parse_printf_string(t_state *state)
@@ -59,7 +59,7 @@ void	parse_printf_string(t_state *state)
 			if (state->start != i)
 				append_to_list(state, i, t_false);
 			j = i + 1;
-			while (state->str[j] && !strchr("diouxXfFeEgGaAcspn%",
+			while (state->str[j] && !ft_strchr("diouxXfFeEgGaAcspn%",
 					state->str[j]) && is_flag_char(state->str[j]))
 				j++;
 			if (state->str[j])

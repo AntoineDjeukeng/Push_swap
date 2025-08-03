@@ -6,7 +6,7 @@
 /*   By: adjeuken <adjeuken@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 10:52:10 by adjeuken          #+#    #+#             */
-/*   Updated: 2025/07/25 11:14:01 by adjeuken         ###   ########.fr       */
+/*   Updated: 2025/08/03 19:00:10 by adjeuken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,3 +106,4 @@ void				ft_get_first_line(t_stack *s);
 
 void				ft_is_sorted_bounus(t_stack *s);
 void				ft_check_results(t_stack *s);
+void				sort_n(t_stack *s, int n);

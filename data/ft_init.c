@@ -6,7 +6,7 @@
 /*   By: adjeuken <adjeuken@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 03:02:15 by adjeuken          #+#    #+#             */
-/*   Updated: 2025/07/25 10:51:35 by adjeuken         ###   ########.fr       */
+/*   Updated: 2025/08/03 19:17:13 by adjeuken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ t_stack	*ft_init_stack_list(int argc, char *argv[], int t)
 {
 	t_stack	*s;
 
+	if (argc < 2)
+		return (NULL);
 	s = ft_init_s();
 	s->bonus = t;
 	if (!s)

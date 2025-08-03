@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_str.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adjeuken  <adjeuken@student.42.fr>         +#+  +:+       +#+        */
+/*   By: adjeuken <adjeuken@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 14:18:57 by adjeuken          #+#    #+#             */
-/*   Updated: 2025/07/01 23:23:18 by adjeuken         ###   ########.fr       */
+/*   Updated: 2025/08/03 18:58:52 by adjeuken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static char	*handle_null_str_with_precision(const char *s,
 		s = "(null)";
 	if (precision_specified && precision >= 0)
 	{
-		len = strlen(s);
+		len = ft_strlen(s);
 		if (precision < len)
 			len = precision;
 		res = malloc(len + 1);
@@ -82,7 +82,7 @@ int	ft_handle_s(char *s, t_flags *f)
 			f->precision);
 	if (!str)
 		return (-1);
-	len = (int)strlen(str);
+	len = (int)ft_strlen(str);
 	padding = 0;
 	if (f->width > len)
 		padding = f->width - len;

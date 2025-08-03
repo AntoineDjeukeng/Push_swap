@@ -6,7 +6,7 @@
 /*   By: adjeuken <adjeuken@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 10:44:57 by adjeuken          #+#    #+#             */
-/*   Updated: 2025/07/25 10:45:28 by adjeuken         ###   ########.fr       */
+/*   Updated: 2025/08/03 19:16:52 by adjeuken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,13 @@ int	main(int agrc, char *agrv[])
 	s = ft_init_stack_list(agrc, agrv, 0);
 	if (!s->state)
 	{
-		sort(s);
-		bring_smallest_to_top(s);
+		if (s->size < 11)
+			sort_n(s, s->size);
+		else
+		{
+			sort(s);
+			bring_smallest_to_top(s);
+		}
 		i = 0;
 		while (i < s->op_count)
 		{

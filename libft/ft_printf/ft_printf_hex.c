@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_hex.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adjeuken  <adjeuken@student.42.fr>         +#+  +:+       +#+        */
+/*   By: adjeuken <adjeuken@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 12:01:51 by adjeuken          #+#    #+#             */
-/*   Updated: 2025/07/02 00:41:24 by adjeuken         ###   ########.fr       */
+/*   Updated: 2025/08/03 18:59:46 by adjeuken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ char	*hex_apply_precision_and_hash(char *num, t_flags *f)
 		return (NULL);
 	if (!(f->hash && ft_strcmp(prec, "0") != 0))
 		return (prec);
-	tmp = temp_pad_string(prec, strlen(prec) + 1, f->specifier, t_false);
+	tmp = temp_pad_string(prec, ft_strlen(prec) + 1, f->specifier, t_false);
 	if (!tmp)
 	{
 		free(prec);
 		return (NULL);
 	}
-	prefixed = temp_pad_string(tmp, strlen(prec) + 2, '0', t_false);
+	prefixed = temp_pad_string(tmp, ft_strlen(prec) + 2, '0', t_false);
 	free(prec);
 	free(tmp);
 	return (prefixed);
@@ -43,7 +43,7 @@ char	*ft_print_hex_h(t_flags *f, char *num)
 	int		len;
 	char	*result;
 
-	len = strlen(num);
+	len = ft_strlen(num);
 	if (f->width <= len)
 		return (ft_strdup(num));
 	if (f->zero && !f->precision_specified && !f->minus)
@@ -83,7 +83,7 @@ int	ft_print_hex(t_flags *f, va_list *args)
 	final_str = ft_print_hex_and_return_len(f, va_arg(*args, unsigned int));
 	if (!final_str)
 		return (-1);
-	printed_len = (int)write(1, final_str, strlen(final_str));
+	printed_len = (int)write(1, final_str, ft_strlen(final_str));
 	free(final_str);
 	return (printed_len);
 }
