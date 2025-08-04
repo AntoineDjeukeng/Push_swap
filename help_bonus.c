@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   help_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adjeuken <adjeuken@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adjeuken  <adjeuken@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 10:40:55 by adjeuken          #+#    #+#             */
-/*   Updated: 2025/07/25 11:11:05 by adjeuken         ###   ########.fr       */
+/*   Updated: 2025/08/04 13:08:46 by adjeuken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	ft_is_sorted_bounus(t_stack *s)
 	int		i;
 	t_node	*tmp;
 
+	if (s->b)
+		return ;
 	tmp = s->a;
 	i = tmp->index;
 	while (tmp)
@@ -64,7 +66,7 @@ void	ft_check_results(t_stack *s)
 	i = 0;
 	while (i < s->op_count)
 	{
-		if (s->ops[i] && s->state != 4)
+		if (s->ops[i] && ft_strcmp(s->ops[i], "") == 0 && s->state != 4)
 			apply_operation(s->ops[i], s);
 		i++;
 	}

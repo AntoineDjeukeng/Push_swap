@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adjeuken <adjeuken@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adjeuken  <adjeuken@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 07:38:34 by adjeuken          #+#    #+#             */
-/*   Updated: 2025/07/25 11:13:38 by adjeuken         ###   ########.fr       */
+/*   Updated: 2025/08/04 13:03:10 by adjeuken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@ int	main(int agrc, char *agrv[])
 	t_stack	*s;
 
 	s = ft_init_stack_list(agrc, agrv, 1);
+	if (!s)
+		return (0);
 	if (!s->state || (s->state && s->is_sorted))
 	{
 		s->line = get_next_line(0);
-		if (!s->line)
+		if (!s->line && !s->is_sorted)
 			s->state = 1;
 		while (s->line)
 		{
