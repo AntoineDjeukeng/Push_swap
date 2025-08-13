@@ -6,7 +6,7 @@
 /*   By: adjeuken <adjeuken@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 10:40:55 by adjeuken          #+#    #+#             */
-/*   Updated: 2025/08/13 09:16:49 by adjeuken         ###   ########.fr       */
+/*   Updated: 2025/08/13 12:41:20 by adjeuken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,11 @@ void	ft_is_sorted_bounus(t_stack *s)
 	int		i;
 	t_node	*tmp;
 
-	tmp = s->a;
+	tmp=NULL;
+	if (!s->a || !s->a->index)
+		return;
 	i = tmp->index;
-	while (tmp)
+	while (tmp )
 	{
 		if (tmp->index < i)
 			return ;
@@ -78,5 +80,10 @@ void	ft_check_results(t_stack *s)
 	{
 		s->is_sorted = 0;
 		ft_is_sorted_bounus(s);
+	}
+	if(s->b && s->b->value)
+	{
+		s->state = 0;
+		s->is_sorted=0;
 	}
 }
