@@ -6,7 +6,7 @@
 /*   By: adjeuken <adjeuken@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 14:28:22 by adjeuken          #+#    #+#             */
-/*   Updated: 2025/08/12 09:41:05 by adjeuken         ###   ########.fr       */
+/*   Updated: 2025/08/13 15:27:11 by adjeuken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,9 @@ t_flags	*ft_find_flags_id(const char *str)
 {
 	t_flags	*flags;
 
-	flags = malloc(sizeof(t_flags));
+	flags = ft_calloc(1, sizeof(t_flags));
 	if (!flags)
 		return (NULL);
-	*flags = (t_flags){0};
 	if (*str == '%')
 		str++;
 	while (*str == '+' || *str == ' ' || *str == '-' || *str == '0'
