@@ -6,7 +6,7 @@
 /*   By: adjeuken <adjeuken@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 10:40:55 by adjeuken          #+#    #+#             */
-/*   Updated: 2025/08/13 12:41:20 by adjeuken         ###   ########.fr       */
+/*   Updated: 2025/08/13 14:48:58 by adjeuken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,25 @@ void	apply_operation(const char *op, t_stack *s)
 		s->state = 4;
 }
 
-void	ft_is_sorted_bounus(t_stack *s)
+void	ft_is_sorted_bonus(t_stack *s)
 {
-	int		i;
-	t_node	*tmp;
+	t_node	*a;
 
-	tmp=NULL;
-	if (!s->a || !s->a->index)
-		return;
-	i = tmp->index;
-	while (tmp )
+	if (!s)
+		return ;
+	a = s->a;
+	while (a && a->next)
 	{
-		if (tmp->index < i)
+		if (a->index > a->next->index)
+		{
+			s->is_sorted = 0;
+			s->state = 0;
 			return ;
-		tmp = tmp->next;
+		}
+		a = a->next;
 	}
-	s->state = 1;
 	s->is_sorted = 1;
+	s->state = 1;
 }
 
 void	ft_check_results(t_stack *s)
@@ -79,11 +81,11 @@ void	ft_check_results(t_stack *s)
 	if ((s->state != 1) || i == 0)
 	{
 		s->is_sorted = 0;
-		ft_is_sorted_bounus(s);
+		ft_is_sorted_bonus(s);
 	}
-	if(s->b && s->b->value)
+	if (s->b && s->b->value)
 	{
 		s->state = 0;
-		s->is_sorted=0;
+		s->is_sorted = 0;
 	}
 }
