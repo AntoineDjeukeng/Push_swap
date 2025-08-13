@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adjeuken <adjeuken@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/25 10:44:57 by adjeuken          #+#    #+#             */
-/*   Updated: 2025/08/13 08:35:29 by adjeuken         ###   ########.fr       */
+/*   Created: 2025/07/23 17:24:07 by adjeuken          #+#    #+#             */
+/*   Updated: 2025/08/13 09:16:00 by adjeuken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-int	main(int agrc, char *agrv[])
+int	ft_isspace(char c)
 {
-	int		i;
-	t_stack	*s;
+	return (c == ' ' || (c >= 9 && c <= 13));
+}
 
-	if (agrc > 1)
-		s = ft_init_stack_list(agrc, agrv, 0);
-	else
-		s = NULL;
-	if (s && !s->state)
+int	ft_issearch(char c, char *search)
+{
+	int	i;
+
+	i = 0;
+	while (search[i])
 	{
-		if (s->size < 11)
-			sort_n(s, s->size);
-		else
-		{
-			sort(s);
-			bring_smallest_to_top(s);
-		}
-		i = 0;
-		while (s->ops[i])
-			ft_printf("%s", s->ops[i++]);
+		if (c == search[i])
+			return (1);
+		i++;
 	}
-	ft_clean_stac(s);
 	return (0);
 }

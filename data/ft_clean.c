@@ -6,7 +6,7 @@
 /*   By: adjeuken <adjeuken@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 03:02:07 by adjeuken          #+#    #+#             */
-/*   Updated: 2025/07/25 10:49:26 by adjeuken         ###   ########.fr       */
+/*   Updated: 2025/08/13 09:09:11 by adjeuken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ void	ft_clean_stac(t_stack *s)
 	if (!s)
 		return ;
 	if ((s->state == 1 && !s->is_sorted))
-		ft_error();
+		ft_dprintf(2, "Error\n");
 	if ((s->state == 1 && s->is_sorted == 1 && s->bonus == 1))
-		ft_r(1);
+		ft_dprintf(1, "OK\n");
 	if ((s->state == 0 && s->is_sorted == 0 && s->bonus == 1))
-		ft_r(0);
+		ft_dprintf(1, "KO\n");
 	free_list(s->a);
 	free_list(s->b);
 	if (s->op_count > 0)
@@ -53,15 +53,16 @@ void	ft_clean_stac(t_stack *s)
 	free(s);
 }
 
-void	ft_error(void)
+int	ft_empty_line(char *line)
 {
-	write(2, "Error\n", 6);
-}
+	int	i;
 
-void	ft_r(int r)
-{
-	if (r)
-		write(1, "OK\n", 3);
-	else
-		write(1, "KO\n", 3);
+	i = 0;
+	while (line[i])
+	{
+		if (!ft_issearch(line[i], " \t\n\v\f\r"))
+			return (0);
+		i++;
+	}
+	return (1);
 }

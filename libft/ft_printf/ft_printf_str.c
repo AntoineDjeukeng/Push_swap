@@ -6,7 +6,7 @@
 /*   By: adjeuken <adjeuken@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 14:18:57 by adjeuken          #+#    #+#             */
-/*   Updated: 2025/08/03 18:58:52 by adjeuken         ###   ########.fr       */
+/*   Updated: 2025/08/12 12:07:13 by adjeuken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ int	ft_handle_c(char value, t_flags *f)
 		pad_char = '0';
 	if (!f->minus)
 	{
-		ft_putnchr(pad_char, padding);
-		write(1, &value, 1);
+		ft_putnchr(pad_char, padding, f->fd);
+		write(f->fd, &value, 1);
 	}
 	else
 	{
-		write(1, &value, 1);
-		ft_putnchr(pad_char, padding);
+		write(f->fd, &value, 1);
+		ft_putnchr(pad_char, padding, f->fd);
 	}
 	return (width);
 }
@@ -87,10 +87,10 @@ int	ft_handle_s(char *s, t_flags *f)
 	if (f->width > len)
 		padding = f->width - len;
 	if (!f->minus)
-		printed_chars += ft_putnchr(pad_char, padding);
-	printed_chars += write(1, str, len);
+		printed_chars += ft_putnchr(pad_char, padding, f->fd);
+	printed_chars += write(f->fd, str, len);
 	if (f->minus)
-		printed_chars += ft_putnchr(pad_char, padding);
+		printed_chars += ft_putnchr(pad_char, padding, f->fd);
 	free(str);
 	return (printed_chars);
 }

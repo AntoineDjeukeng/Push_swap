@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: adjeuken  <adjeuken@student.42.fr>         +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/08/04 14:19:31 by adjeuken          #+#    #+#              #
-#    Updated: 2025/08/04 14:20:08 by adjeuken         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME        = push_swap
 BONUS_NAME  = checker
 
@@ -24,7 +12,7 @@ LIBFT_DIR   = ./libft
 LIBFT_LIB   = $(LIBFT_DIR)/libft.a
 
 SRC         = data/ft_clean.c data/ft_init.c \
-              data/ft_is_sorted.c data/ft_isspace.c \
+              data/ft_is_sorted.c\
               data/ft_try_to_parse_int.c \
               utils/ft_action.c utils/ft_lists.c \
               utils/ft_m_actions.c \
@@ -38,16 +26,16 @@ OBJS_MAIN   = $(SRCS_MAIN:.c=.o)
 SRCS_BONUS  = main_bonus.c help_bonus.c $(SRC)
 OBJS_BONUS  = $(SRCS_BONUS:.c=.o)
 
-all: $(NAME) $(BONUS_NAME)
+# Default rule
+all: $(NAME)
 
 $(NAME): $(OBJS_MAIN) $(LIBFT_LIB)
 	$(CC) $(OBJS_MAIN) $(LDFLAGS) -o $@
 
+bonus: $(BONUS_NAME)
+
 $(BONUS_NAME): $(OBJS_BONUS) $(LIBFT_LIB)
 	$(CC) $(OBJS_BONUS) $(LDFLAGS) -o $@
-
-# Alias for compatibility
-bonus: $(BONUS_NAME)
 
 $(LIBFT_LIB):
 	@$(MAKE) -C $(LIBFT_DIR)
@@ -66,5 +54,6 @@ fclean: clean
 re: fclean all
 
 .PHONY: all bonus clean fclean re
+
 
 # ARG=$(python3 -c "import random; print(' '.join(map(str, random.sample(range(-300, 300), 600))))")

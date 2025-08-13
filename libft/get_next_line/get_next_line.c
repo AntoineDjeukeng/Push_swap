@@ -6,7 +6,7 @@
 /*   By: adjeuken <adjeuken@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 09:41:21 by adjeuken          #+#    #+#             */
-/*   Updated: 2025/07/17 10:20:49 by adjeuken         ###   ########.fr       */
+/*   Updated: 2025/08/13 07:39:34 by adjeuken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static int	ft_init_state(t_state_split **state_ptr_array, int fd)
 {
 	t_state_split	*state;
 
-	if (fd < 0 || fd >= MAX_FD || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd >= 1024 || BUFFER_SIZE <= 0)
 		return (0);
 	if (state_ptr_array[fd] == NULL)
 	{
@@ -91,7 +91,7 @@ static int	ft_init_state(t_state_split **state_ptr_array, int fd)
 
 char	*get_next_line(int fd)
 {
-	static t_state_split	*states[MAX_FD] = {NULL};
+	static t_state_split	*states[1024];
 	t_state_split			*state;
 	char					*line;
 

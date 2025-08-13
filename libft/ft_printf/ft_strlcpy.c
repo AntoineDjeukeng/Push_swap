@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adjeuken <adjeuken@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adjeuken  <adjeuken@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/21 08:43:37 by adjeuken          #+#    #+#             */
-/*   Updated: 2025/07/17 11:35:58 by adjeuken         ###   ########.fr       */
+/*   Created: 2025/05/19 15:54:20 by adjeuken          #+#    #+#             */
+/*   Updated: 2025/06/29 16:13:26 by adjeuken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_strndup(const char *s, size_t n)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	size_t	i;
-	size_t	j;
-	char	*dup;
 
 	i = 0;
-	j = 0;
-	while (i < n && s[i])
-		i++;
-	dup = (char *)malloc(i + 1);
-	if (!dup)
-		return (NULL);
-	while (j < i)
+	if (size != 0)
 	{
-		dup[j] = s[j];
-		j++;
+		while (src[i] && i < size - 1)
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
 	}
-	dup[i] = '\0';
-	return (dup);
+	while (src[i])
+		i++;
+	return (i);
 }

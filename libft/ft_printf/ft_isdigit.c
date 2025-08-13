@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adjeuken  <adjeuken@student.42.fr>         +#+  +:+       +#+        */
+/*   By: adjeuken <adjeuken@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/23 17:24:07 by adjeuken          #+#    #+#             */
-/*   Updated: 2025/07/23 19:48:06 by adjeuken         ###   ########.fr       */
+/*   Created: 2025/02/10 10:50:44 by yfeunteu          #+#    #+#             */
+/*   Updated: 2025/05/19 12:05:18 by adjeuken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "ft_printf.h"
 
-int	ft_isspace(char c)
+int	ft_isdigit(int c)
 {
-	return (c == ' ' || (c >= 9 && c <= 13));
+	return (c >= 48 && c <= 57);
 }

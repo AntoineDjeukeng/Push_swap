@@ -6,7 +6,7 @@
 /*   By: adjeuken <adjeuken@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:09:01 by adjeuken          #+#    #+#             */
-/*   Updated: 2025/07/17 10:20:41 by adjeuken         ###   ########.fr       */
+/*   Updated: 2025/08/12 12:53:52 by adjeuken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # include <stdint.h>
 # include <stdlib.h>
 # include <unistd.h>
-
-# define MAX_FD 1024
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 2
