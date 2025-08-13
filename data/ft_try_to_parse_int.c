@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_try_to_parse_int.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adjeuken  <adjeuken@student.42.fr>         +#+  +:+       +#+        */
+/*   By: adjeuken <adjeuken@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 03:02:42 by adjeuken          #+#    #+#             */
-/*   Updated: 2025/08/13 11:21:33 by adjeuken         ###   ########.fr       */
+/*   Updated: 2025/08/13 11:24:23 by adjeuken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	ft_skip_whitespace_and_sign(const char *str, int *index, int *sign)
 {
 	*sign = 1;
-	while (ft_issearch(str[*index]," "))
+	while (ft_issearch(str[*index], " "))
 		(*index)++;
 	if (str[*index] == '-' || str[*index] == '+')
 	{
@@ -23,9 +23,9 @@ static int	ft_skip_whitespace_and_sign(const char *str, int *index, int *sign)
 			*sign = -1;
 		(*index)++;
 	}
-	while (ft_issearch(str[*index],"0"))
+	while (ft_issearch(str[*index], "0"))
 		(*index)++;
-	if(*index>0 && str[*index-1]=='0' && str[*index]=='\0')
+	if (*index > 0 && str[*index - 1] == '0' && str[*index] == '\0')
 		(*index)--;
 	return (1);
 }
@@ -69,8 +69,7 @@ int	ft_try_parse_int(const char *str, int *out)
 		return (0);
 	while (ft_isspace(str[i]))
 		i++;
-	
-	if (str[i] != '\0' )
+	if (str[i] != '\0')
 		return (0);
 	if (out)
 		*out = (int)(sign * result);
